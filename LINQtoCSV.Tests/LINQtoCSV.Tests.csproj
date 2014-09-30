@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CsvContextWriteTests.cs" />
     <Compile Include="CsvContextReadTests.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="IAssertable.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="ProductDataSpecificFieldIndex.cs" />

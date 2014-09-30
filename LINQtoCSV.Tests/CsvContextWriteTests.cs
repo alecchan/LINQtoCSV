@@ -41,5 +41,40 @@ product"",0,
 
             AssertWrite(dataRows_Test, fileDescription_namesNl2, expected);
         }
+
+        [TestMethod()]
+        public void FileColumnsAreInOrderTheyAreDeclared()
+        {
+            // Arrange
+            var customers = new Customer[]{
+                new Customer{
+                            CustomerId = "12345",
+                            CompanyName = "Northwind",
+                            ContactName = "John",
+                            ContactTitle = "Smith",
+                            Address = "6 High Street",
+                            City = "Leeds",
+                            Region = "Yorkshire",
+                            PostCode = "LS13 XYX",
+                            Country = "England",
+                            Phone = "12345",
+                            Fax = "67890"
+                }
+            };
+
+            var fileDescription_namesNl2 = new CsvFileDescription
+            {
+                SeparatorChar = ',',
+                FirstLineHasColumnNames = true,
+                EnforceCsvColumnAttribute = false,
+                FileCultureName = "en-GB" // default is the current culture
+            };
+
+            string expected = "CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostCode,Country,Phone,Fax\r\n" +
+                                "12345,Northwind,John,Smith,6 High Street,Leeds,Yorkshire,LS13 XYX,England,12345,67890\r\n";
+
+            // Act Assert
+            AssertWrite(customers, fileDescription_namesNl2, expected);
+        }
     }
 }

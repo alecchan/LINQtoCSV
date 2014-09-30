@@ -221,7 +221,7 @@ namespace LINQtoCSV
             // Note that for reading from a file with field names in the 
             // first line, method ReadNames reworks IndexToInfo.
 
-            Array.Sort(m_IndexToInfo);
+            m_IndexToInfo = m_IndexToInfo.OrderBy(x => x.index).ToArray();
 
             // ----------
             // Make sure there are no duplicate FieldIndices.
